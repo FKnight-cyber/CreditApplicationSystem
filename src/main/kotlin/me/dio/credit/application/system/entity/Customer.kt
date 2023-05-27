@@ -6,7 +6,7 @@ import java.math.BigDecimal
 @Entity
 @Table(name = "Customer")
 data class Customer(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
     @Column(nullable = false) var firstName: String = "",
     @Column(nullable = false) var lastName: String = "",
     @Column(nullable = false, unique = true) val cpf: String = "",
