@@ -44,4 +44,17 @@ class RestExceptionHandler {
             ), HttpStatus.CONFLICT
         )
     }
+
+    @ExceptionHandler(IllegalArgumentException::class)
+    fun handleValidException(ex: IllegalArgumentException): ResponseEntity<ExceptionDetails> {
+        return ResponseEntity(
+            ExceptionDetails(
+                title = "Bad Request!, check out the documentation",
+                timestamp = LocalDateTime.now(),
+                status = HttpStatus.CONFLICT.value(),
+                exception = ex.javaClass.toString(),
+                details = mutableMapOf(ex.cause.toString() to ex.message)
+            ), HttpStatus.CONFLICT
+        )
+    }
 }
